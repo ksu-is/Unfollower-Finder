@@ -19,9 +19,10 @@ Or
 ```
 python3 insta-unfollower.py USERNAME PASSWORD
 ```
-
 ## Roadmap
 - Username whitelist.
 - Better flow for calculating time between requests to avoid ban.
 - ~~Avoid re-log on instagram everytime when we run the script~~ done
 - ~~Keep followers and following lists in cache to speedup execution~~ done
+
+Will edit the code to make it function independently (and more elementary), without connecting to Instagram.
