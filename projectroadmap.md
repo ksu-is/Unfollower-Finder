@@ -3,8 +3,9 @@
 - [ ] Potentially edit script to be not require Instagram login if making it more rudimentary is useful for my skill level
 - [ ] Make it interatcive to allow input from users (list)
 - [ ] Test with personal account
-- [ ] Rename
+- [x] Rename
 - [ ] Debug using VSC debugger
+- [ ] If doable, add GUI
 - [ ] Repeat as necessary
       
 
