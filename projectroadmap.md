@@ -9,5 +9,6 @@
 - [ ] Debug using VSC debugger
 - [ ] Repeat as necessary
 - [ ] If doable- add GUI
+- [x] Upload PPT slide introducing the project
       
 
