@@ -6,49 +6,10 @@ import system
 import json
 
 
-class Credentials:
-    def __init__(self):
-        if os.environ.get('INSTA_USERNAME') and os.environ.get('INSTA_PASSWORD'):
-            self.username = os.environ.get('INSTA_USERNAME')
-            self.password = os.environ.get('INSTA_PASSWORD')
-        elif len(sys.argv) > 1:
-            self.username = sys.argv[1]
-            self.password = sys.argv[2]
-        else:
-            sys.exit('Please provide INSTA_USERNAME and INSTA_PASSWORD environement variables or as an argument as such: ./insta-unfollower.py USERNAME PASSWORD.\nAborting...')
-
-credentials = Credentials()
-
-
-def init():
-    headers = {
-        'User-Agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36')
-    }
-
-    res1 = session.get(instagram_url, headers=headers)
-    ig_app_id = re.findall(r'X-IG-App-ID":"(.*?)"', res1.text)[0]
-
-    res2 = session.get('https://www.instagram.com/data/shared_data/', headers=headers, cookies=res1.cookies)
-    csrf = res2.json()['config']['csrf_token']
-    if csrf:
-        headers['x-csrftoken'] = csrf
-        # extra needed headers
-        headers['accept-language'] = "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7,es;q=0.6,es-MX;q=0.5,es-ES;q=0.4"
-        headers['x-requested-with'] = "XMLHttpRequest"
-        headers['accept'] = "*/*"
-        headers['referer'] = "https://www.instagram.com/"
-        headers['x-ig-app-id'] = ig_app_id
-        ###
-        cookies = res1.cookies.get_dict()
-        cookies['csrftoken'] = csrf
-    else:
-        print("No csrf token found in code or empty, maybe you are temp ban? Wait 1 hour and retry")
-        return False
-
-    time.sleep(random.randint(2, 6))
-
-    return headers, cookies
-
+class InstagramUnfollower:
+    def init(self):
+        self.followers = []
+        self.following = []
 
 def login(headers, cookies):
     post_data = {
