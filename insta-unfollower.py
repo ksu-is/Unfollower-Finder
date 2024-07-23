@@ -21,29 +21,7 @@ class InstagramUnfollower:
         return unfollowers
 
 
-def get_followers_list(user_id, headers):
-    followers_list = []
 
-    response = session.get(followers_route % (instagram_url, user_id), headers=headers).json()
-    while response['status'] != 'ok':
-        time.sleep(600) # querying too much, sleeping a bit before querying again
-        response = session.get(followers_route % (instagram_url, user_id), headers=headers).json()
-
-    print('.', end='', flush=True)
-
-    followers_list.extend(response['users'])
-
-    while 'next_max_id' in response:
-        time.sleep(2)
-
-        response = session.get(followers_route % (instagram_url, user_id), params={'max_id': response['next_max_id']}, headers=headers).json()
-        while response['status'] != 'ok':
-            time.sleep(600) # querying too much, sleeping a bit before querying again
-            response = session.get(followers_route % (instagram_url, user_id), params={'max_id': response['next_max_id']}, headers=headers).json()
-
-        print('.', end='', flush=True)
-
-        followers_list.extend(response['users'])
 
     return followers_list
 
