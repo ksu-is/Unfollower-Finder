@@ -10,31 +10,15 @@ class InstagramUnfollower:
     def init(self):
         self.followers = []
         self.following = []
+        
+    def load_list_from_input(self, prompt):
+        print(prompt)
+        return input().split(',')
 
-def login(headers, cookies):
-    post_data = {
-        'username': credentials.username,
-        'enc_password': '#PWD_INSTAGRAM_BROWSER:0:{}:{}'.format(int(datetime.now().timestamp()), credentials.password)
-    }
-
-    response = session.post(login_route, headers=headers, data=post_data, cookies=cookies, allow_redirects=True)
-    response_data = json.loads(response.text)
-
-    if 'two_factor_required' in response_data:
-        print('Please disable 2-factor authentication to login.')
-        sys.exit(1)
-
-    if 'message' in response_data and response_data['message'] == 'checkpoint_required':
-        print('Please check Instagram app for a security confirmation that it is you trying to login.')
-        sys.exit(1)
-
-    return response_data['authenticated'], response.cookies.get_dict()
-
-
-# Note: this endpoint results are not getting updated directly after unfollowing someone
-def get_user_profile(username, headers):
-    response = session.get(profile_route, params={'username': username}, headers=headers).json()
-    return response['data']['user']
+    def get_unfollowers(self):
+        followers_set = set(self.followers)
+        unfollowers = [user for user in self.following if user not in followers_set]
+        return unfollowers
 
 
 def get_followers_list(user_id, headers):
