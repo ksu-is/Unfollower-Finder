@@ -20,10 +20,11 @@ class InstagramUnfollower:
         unfollowers = [user for user in self.following if user not in followers_set]
         return unfollowers
 
+     def run(self):
+        self.followers = self.load_list_from_input("Please enter your followers, separated by commas:")
+        self.following = self.load_list_from_input("Please enter the accounts you are following, separated by commas:")
 
-
-
-    return followers_list
+        unfollowers = self.get_unfollowers()
 
 
 def get_following_list(user_id, headers):
