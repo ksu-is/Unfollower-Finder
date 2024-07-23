@@ -2,21 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import os
+import system
 import json
-
-cache_dir = 'cache'
-session_cache = '%s/session.txt' % (cache_dir)
-followers_cache = '%s/followers.json' % (cache_dir)
-following_cache = '%s/following.json' % (cache_dir)
-
-instagram_url = 'https://www.instagram.com'
-login_route = '%s/accounts/login/ajax/' % (instagram_url)
-profile_route = '%s/api/v1/users/web_profile_info/' % (instagram_url)
-followers_route = '%s/api/v1/friendships/%s/followers/'
-following_route = '%s/api/v1/friendships/%s/following/'
-unfollow_route = '%s/web/friendships/%s/unfollow/'
-
-session = requests.Session()
 
 
 class Credentials:
