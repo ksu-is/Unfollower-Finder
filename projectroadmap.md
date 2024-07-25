@@ -4,10 +4,10 @@
 - [x] Potentially edit script to be not require Instagram login if making it more rudimentary if useful for my skill level
 - [x] Make it interatcive to allow input from users (list)
 - [x] Configure way for code to read list
-- [ ] Test with personal account
+- [x] Test with followes/following list
 - [x] Rename
-- [ ] Debug using VSC debugger
-- [ ] Repeat as necessary
+- [x] Debug using VSC debugger
+- [x] Repeat as necessary
 - [ ] If doable- add GUI
 - [x] Upload PPT slide introducing the project
       
