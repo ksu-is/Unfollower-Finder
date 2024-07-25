@@ -25,7 +25,7 @@ class InstagramUnfollower:
 
         unfollowers = self.get_unfollowers()
 
-print('You are following these users who aren't following you back:')
+print('You are following these users who aren/t following you back:')
         for user in unfollowers:
             print(user)
 
